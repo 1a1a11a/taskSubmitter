@@ -1,5 +1,6 @@
 echo "################## Thank you for trying task_submitter #######################" 
 pip3 install psutil --user 
+chmod +x submit watcher watcher.py 
 mkdir $HOME/.task_submitter
 cp submit $HOME/.task_submitter/
 cp utilEmail.py $HOME/.task_submitter/

@@ -15,11 +15,11 @@ python3-pip `
 
 After that,
 
-`git clone https://github.com/1a1a11a/task_submitter.git`
-
-`cd task_submitter `
-
-`sudo ./install.sh`
+```
+git clone https://github.com/1a1a11a/task_submitter.git
+cd task_submitter 
+sudo ./install.sh
+```
 
 If you want to install to a local directory, instead of `sudo ./install.sh`, run
 `./install_user.sh`
