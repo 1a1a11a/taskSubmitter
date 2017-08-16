@@ -1,7 +1,28 @@
 echo "################## Thank you for trying task_submitter #######################" 
+
+# check python3 exists or not 
+haspy3=$(python3 -V >/dev/null 2>&1; echo $?);
+if [ ! "$haspy3" -eq 0 ]; then 
+	echo "you do not have python3 installed, please install python3 first";
+	exit 1;
+fi 
+
+# check pip3 exists or not 
+haspip3=$(pip3 >/dev/null 2>&1; echo $?);
+
+# if not installed, then install pip3 
+if [ ! "$haspip3" -eq 0 ]; then 
+	echo "################## install python3-pip #######################" 
+	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py;
+	python3 get-pip.py --user; 
+fi 
+
+# install psutil 
 pip3 install psutil --user 
+
 chmod +x submit watcher watcher.py 
 mkdir $HOME/.task_submitter
+
 cp submit $HOME/.task_submitter/
 cp utilEmail.py $HOME/.task_submitter/
 cp watcher $HOME/.task_submitter/
