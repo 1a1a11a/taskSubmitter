@@ -38,13 +38,13 @@ def watch(pid, name="no name", check_interval=20):
     :return: None 
 
 	"""
-	msg = "task {}({}) on {} begins executing".format(name, pid, socket.gethostname())
+	msg = "task \"{}({})\" on {} begins executing".format(name, pid, socket.gethostname())
 	configEmailClient().send_email(message=msg, topic="task submitted") 
 
 	while psutil.pid_exists(pid):
 		time.sleep(check_interval)
 
-	msg = "task {}({}) on {} finishes executing".format(name, pid, socket.gethostname())
+	msg = "task \"{}({})\" on {} finishes executing".format(name, pid, socket.gethostname())
 	configEmailClient().send_email(message=msg, topic="task finished") 
 
 
