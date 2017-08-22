@@ -23,8 +23,8 @@ sudo ./install.sh
 If you want to install to a local directory, instead of `sudo ./install.sh`, run
 `./install_user.sh`
 
-\* It is better to apply for an email which is dedicated to sending
-notifications.
+\* I have setup a default email account with the tool, but it is better to apply for an email which is dedicated to sending
+notifications. 
 
  
 
