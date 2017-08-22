@@ -1,9 +1,9 @@
-task_submitter
+taskSubmitter
 ==============
 
-A tool for submitting jobs to background and get notifications when it finishes.
+A tool for submitting jobs for background running and get notifications when it finishes.
 
-Currently support linux and macOS, dependency: python3, python3-pip.
+Currently only email notification is support, tool supports linux and macOS, dependency: python3, python3-pip.
 
  
 
@@ -15,8 +15,8 @@ If you don’t have python3, please install python3 and python3-dev first
 After that,
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-git clone https://github.com/1a1a11a/task_submitter.git
-cd task_submitter 
+git clone https://github.com/1a1a11a/taskSubmitter.git
+cd taskSubmitter 
 sudo ./install.sh
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
