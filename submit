@@ -1,10 +1,10 @@
 #!/usr/bin/env bash 
 
 # check the existence of config file 
-if [ ! -e $HOME/.task_submitter_config ] && [ ! -e /.task_submitter_config ]; then 
+if [ ! -e $HOME/.taskSubmitter_config ] && [ ! -e /.taskSubmitter_config ]; then 
 	echo "
             you didn't provide config file, please copy and edit the following lines, 
-            then save it to $HOME/.task_submitter_config or /.task_submitter_config, 
+            then save it to $HOME/.taskSubmitter_config or /.taskSubmitter_config, 
             remember change the permission of the file to 600, so others won't see your password 
             optionally you can use an email dedicatd to sending email 
             
@@ -18,4 +18,5 @@ else
 	pid=$!; 
 	echo "################# RUN JOB $* ($pid) with email notification ##################"; 
 	nohup watcher.py $pid $* 1>/dev/null 2>&1 & 
+      echo $(date): \t $(pwd): \t $@ >> $HOME/.submitLog 2>/dev/null 
 fi 

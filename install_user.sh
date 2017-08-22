@@ -1,4 +1,4 @@
-echo "################## Thank you for trying task_submitter #######################" 
+echo "################## Thank you for trying taskSubmitter #######################" 
 
 # check python3 exists or not 
 haspy3=$(python3 -V >/dev/null 2>&1; echo $?);
@@ -21,18 +21,18 @@ fi
 pip3 install psutil --user 
 
 chmod +x submit watcher watcher.py 
-mkdir $HOME/.task_submitter
+mkdir $HOME/.taskSubmitter
 
-cp submit $HOME/.task_submitter/
-cp utilEmail.py $HOME/.task_submitter/
-cp watcher $HOME/.task_submitter/
-cp watcher.py $HOME/.task_submitter/
+cp submit $HOME/.taskSubmitter/
+cp utilEmail.py $HOME/.taskSubmitter/
+cp watcher $HOME/.taskSubmitter/
+cp watcher.py $HOME/.taskSubmitter/
 
 # add to user shell profile, this is not complete, seeking a better way 
 for p in $HOME/.bashrc $HOME/.bash_profile $HOME/.profile $HOME/.zshrc; do 
 	if [ -e $p ]; then 
 		# echo $p; 
-		echo export PATH='$PATH:'$HOME/.task_submitter/ >> $p; 
+		echo export PATH='$PATH:'$HOME/.taskSubmitter/ >> $p; 
 	fi 
 done 
 
@@ -40,16 +40,16 @@ done
 echo "################## Installation finished, begin setting #######################"
 echo -n "Your email to receive notification: "
 read receiver 
-echo [info] > $HOME/.task_submitter_config 
-echo "receiver=$receiver" >> $HOME/.task_submitter_config 
+echo [info] > $HOME/.taskSubmitter_config 
+echo "receiver=$receiver" >> $HOME/.taskSubmitter_config 
 echo -n "Email for sending notification (better to use a dedicated email for security reason, hit enter to use default): "
 read sender
 if [ ! -z $sender ]; then 
 	echo -n "Password for the email: "
 	read -s sender_pass 
 	if [ ! -z $sender_pass ]; then 
-		echo "sender=$sender" >> $HOME/.task_submitter_config 
-		echo "sender_pass=$sender_pass" >> $HOME/.task_submitter_config 
+		echo "sender=$sender" >> $HOME/.taskSubmitter_config 
+		echo "sender_pass=$sender_pass" >> $HOME/.taskSubmitter_config 
 	fi 
 fi 
 echo "################## Setting finished, you need to re-login to use it #######################"

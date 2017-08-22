@@ -16,7 +16,7 @@ class configClass:
         self.receiver       =   None 
         self.sender         =   "tasksubmitter0817@gmail.com"
         self.sender_pass    =   "IamTaskSubmitter"
-        self.sender_name    =   "task_submitter"
+        self.sender_name    =   "taskSubmitter"
 
         # currently only support gmail 
         self.email_service  = "gmail"
@@ -26,20 +26,20 @@ class configClass:
 
     def load_config(self):
         """
-        load config from ~/.task_submitter_config or /.task_submitter_config, 
+        load config from ~/.taskSubmitter_config or /.taskSubmitter_config, 
         user level config is preferred
         """ 
 
         # gmail may not allow this by default, see https://support.google.com/accounts/answer/6010255?hl=en
 
-        if os.path.exists(os.path.expanduser("~/.task_submitter_config")):
-            self.config_loc = os.path.expanduser("~/.task_submitter_config")
-        elif os.path.exists("/.task_submitter_config"):
-            self.config_loc = "/.task_submitter_config"
+        if os.path.exists(os.path.expanduser("~/.taskSubmitter_config")):
+            self.config_loc = os.path.expanduser("~/.taskSubmitter_config")
+        elif os.path.exists("/.taskSubmitter_config"):
+            self.config_loc = "/.taskSubmitter_config"
         else:
             err_msg = '''
             you didn't provide config file, please copy and edit the following lines, 
-            then save it to $HOME/.task_submitter_config or /.task_submitter_config, 
+            then save it to $HOME/.taskSubmitter_config or /.taskSubmitter_config, 
             remember to change the permission of the file to 600, so others won't see your password 
             optionally you can use an email dedicatd to sending email 
             
