@@ -18,5 +18,5 @@ else
 	pid=$!; 
 	echo "################# RUN JOB $* ($pid) with email notification ##################"; 
 	nohup watcher.py $pid $* 1>/dev/null 2>&1 & 
-      echo -e "$(date): \t $(pwd): \t $@ >> $HOME/.submitLog 2>/dev/null" 
+      echo -e "$(date): \t $(pwd): \t $@" >> $HOME/.submitLog 2>/dev/null 
 fi 
