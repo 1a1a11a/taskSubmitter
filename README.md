@@ -1,4 +1,4 @@
-taskSubmitter
+TaskSubmitter
 =============
 
 A tool for submitting jobs for background running and get notifications when it
@@ -8,13 +8,14 @@ finishes.
 
 -   automatically run task in background with output logging
 
--   notify user via email when task is finished
+-   notify user (via email / telegram -at the moment-) when task is finished
 
 -   automatically log all the experiments I have done
 
  
 
-Currently only email notification is support, tool supports linux and macOS,
+Currently **Email notifications** and **Telegram messages** are supported,
+tool supports linux and macOS,
 dependency: python3, python3-pip.
 
  

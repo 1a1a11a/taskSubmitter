@@ -5,7 +5,7 @@ import sys
 import time 
 import configparser 
 import smtplib
-
+import subprocess
 
 
 class configClass:
@@ -17,6 +17,8 @@ class configClass:
         self.sender         =   "tasksubmitter0817@gmail.com"
         self.sender_pass    =   "IamTaskSubmitter"
         self.sender_name    =   "taskSubmitter"
+
+        self.telegram_api_address = "https://integram.org/caLeNAvl6fq"
 
         # currently only support gmail 
         self.email_service  = "gmail"
@@ -55,8 +57,9 @@ class configClass:
 
         self.cparser = configparser.ConfigParser() 
         self.cparser.read(self.config_loc)
-        assert "receiver" in self.cparser["info"], "Please provide reciever email address in config" 
-        self.receiver = self.cparser["info"]["receiver"]
+        #assert "receiver" in self.cparser["info"], "Please provide reciever email address in config" 
+        if "receiver" in self.cparser["info"] and len(self.cparser["info"]["receiver"]): 
+            self.receiver = self.cparser["info"]["receiver"]
         if "sender" in self.cparser["info"] and len(self.cparser["info"]["sender"]): 
             self.sender = self.cparser["info"]["sender"]
             self.sender_pass = self.cparser["info"]["sender_pass"]
@@ -64,6 +67,13 @@ class configClass:
             self.sender_name = self.cparser["info"]["sender_name"]
         if "receiver" in self.cparser["info"] and len(self.cparser["info"]["receiver"]): 
             self.receiver = self.cparser["info"]["receiver"]
+
+        if "email_service" in self.cparser["info"] and len(self.cparser["info"]["email_service"]): 
+            self.email_service = self.cparser["info"]["email_service"]
+        if "telegram_api_address" in self.cparser["info"] and len(self.cparser["info"]["telegram_api_address"]): 
+            self.telegram_api_address = self.cparser["info"]["telegram_api_address"]
+
+
 
     def __str__(self):
         return "sender_addr: {}\npass: {}\nname: {}\nreceiver: {}".format(self.sender, 
@@ -127,23 +137,30 @@ class emailClient:
 
 
     def send_email(self, message, receiver=None, topic="No topic"):
-        if receiver is None:
-            assert self.receiver is not None, "please provide receiver email" 
+
+        if self.config.email_service == "gmail":
+            if receiver is None:
+                assert self.receiver is not None, "please provide receiver email" 
             receiver = self.receiver
+            try: 
+                self.email_server.sendmail(self.login_username, receiver, 
+                                emailConst.message_template.format(sender=self.login_username
+                                                                , sender_name=self.sender_name
+                                                                , receiver=receiver
+                                                                , topic=topic
+                                                                , message=message))         
 
-        try: 
-            self.email_server.sendmail(self.login_username, receiver, 
-                            emailConst.message_template.format(sender=self.login_username
-                                                             , sender_name=self.sender_name
-                                                             , receiver=receiver
-                                                             , topic=topic
-                                                             , message=message))         
-
-        except Exception as e: 
-            print("ERROR: failed to send email {}".format(e), file=sys.stderr)
-            exit(1)
-
-
+            except Exception as e: 
+                print("ERROR: failed to send email {}".format(e), file=sys.stderr)
+                exit(1)
+        if self.config.email_service == "telegram":
+            try: 
+                send_command = 'curl -d \'{"text":"' + '*&#9886;' + topic + ':&#9887;*<br/>'  + message + '"}\' -H "Content-Type: application/json" -X POST ' + self.telegram_api_address 
+                subprocess.call(send_command, shell=True)
+                print(send_command)
+            except Exception as e: 
+                print("ERROR: failed to send telegram {}".format(e), file=sys.stderr)
+                exit(1)
     def close(self):
         self.email_server.quit() 
 
@@ -175,7 +192,7 @@ class configEmailClient(emailClient):
     def __init__(self):
         self.config = configClass()
         print(self.config)
-        assert self.config.email_service == "gmail", "only gmail is supported for now" 
+        #assert self.config.email_service == "gmail", "only gmail is supported for now" 
 
         if self.config.email_service == "gmail":
             super(configEmailClient, self).__init__(emailConst.smtp_server_gmail, 
@@ -184,7 +201,12 @@ class configEmailClient(emailClient):
                                                     sender_name=self.config.sender_name,
                                                     smtp_port=emailConst.smtp_port_gmail, 
                                                     use_SSL=False, use_TLS=True)
-        self.receiver = self.config.receiver 
+            self.receiver = self.config.receiver
+
+        if self.config.email_service == "telegram":
+            self.telegram_api_address = self.config.telegram_api_address
+        
+
 
 
 if __name__ == "__main__": 
