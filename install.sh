@@ -1,3 +1,5 @@
+#!/bin/bash 
+
 echo "################## Thank you for trying taskSubmitter #######################" 
 
 # check python3 exists or not 
@@ -29,19 +31,30 @@ cp watcher.py /usr/bin/
 
 # begin initialization, create config file 
 echo "################## Installation finished, begin setting #######################"
-echo -n "Your email to receive notification: "
-read receiver 
-echo [info] > /.taskSubmitter_config 
-echo "receiver=$receiver" >> /.taskSubmitter_config 
-echo -n "Email for sending notification (better to use a dedicated email for security reason, hit enter to use default): "
-read sender
-if [ ! -z $sender ]; then 
-	echo -n "Password for the email: "
-	read -s sender_pass 
-	if [ ! -z $sender_pass ]; then 
-		echo "sender=$sender" >> /.taskSubmitter_config 
-		echo "sender_pass=$sender_pass" >> /.taskSubmitter_config 
+echo -n "Select your notification service: gmail / telegram (type service name, or just press Enter for gmail): "
+read email_service
+echo [info] > /.taskSubmitter_config  
+if [ -z $email_service ] || [[ "$email_service" == "gmail" ]] ; then
+	echo -n "Your email to receive notification: "
+	read receiver 
+	echo "receiver=$receiver" >> /.taskSubmitter_config 
+	echo -n "Email for sending notification (better to use a dedicated email for security reason, hit enter to use default): "
+	read sender
+	if [ ! -z $sender ]; then 
+		echo -n "Password for the email: "
+		read -s sender_pass 
+		if [ ! -z $sender_pass ]; then 
+			echo "sender=$sender" >> /.taskSubmitter_config 
+			echo "sender_pass=$sender_pass" >> /.taskSubmitter_config 
+		fi 
 	fi 
-fi 
-echo "################## Setting finished, use submit job to run jobs #######################"
+	echo "email_service=gmail" >> /.taskSubmitter_config 
+elif [[ "$email_service" == "telegram" ]] ; then
+	echo "email_service=telegram" >> /.taskSubmitter_config 
+	echo "Go to this bot and obtain the webhook https://telegram.me/bullhorn_bot?start "
+	echo -n "Enter the webhook URL: "
+	read telegram_api_address 
+	echo "telegram_api_address=$telegram_api_address" >> /.taskSubmitter_config 
+fi
+echo "################## We're all set! use submit job to run jobs #######################"
 

@@ -1,0 +1,57 @@
+ERROR: failed to send telegram [Errno 2] No such file or directory: 'curl -d \'{"text":"**task submitted:**\ntask "sleep 2(6582)" on R3Z4-UBUNTU begins executing"}\' -H "Content-Type: application/json" -X POST'
+sender_addr: tasksubmitter0817@gmail.com
+pass: IamTaskSubmitter
+name: taskSubmitter
+receiver: None
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    83    0     0  100    83      0     98 --:--:-- --:--:-- --:--:--   109
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    84    0     0  100    84      0    130 --:--:-- --:--:-- --:--:--   170
+sender_addr: tasksubmitter0817@gmail.com
+pass: IamTaskSubmitter
+name: taskSubmitter
+receiver: None
+curl -d '{"text":"**task submitted:**
+task "sleep 2(6930)" on R3Z4-UBUNTU begins executing"}' -H "Content-Type: application/json" -X POST https://integram.org/caLeNAvl6fq
+sender_addr: tasksubmitter0817@gmail.com
+pass: IamTaskSubmitter
+name: taskSubmitter
+receiver: None
+curl -d '{"text":"**task finished:**
+task "sleep 2(6930)" on R3Z4-UBUNTU finishes executing"}' -H "Content-Type: application/json" -X POST https://integram.org/caLeNAvl6fq
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    83    0     0  100    83      0    107 --:--:-- --:--:-- --:--:--   109
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:--  0:00:01 --:--:--     0100    84    0     0  100    84      0     46  0:00:01  0:00:01 --:--:--    46
+sender_addr: tasksubmitter0817@gmail.com
+pass: IamTaskSubmitter
+name: taskSubmitter
+receiver: None
+curl -d '{"text":"**task submitted:**
+task [sleep 2(7396)] on R3Z4-UBUNTU begins executing"}' -H "Content-Type: application/json" -X POST https://integram.org/caLeNAvl6fq
+sender_addr: tasksubmitter0817@gmail.com
+pass: IamTaskSubmitter
+name: taskSubmitter
+receiver: None
+curl -d '{"text":"**task finished:**
+task [sleep 2(7396)] on R3Z4-UBUNTU finishes executing"}' -H "Content-Type: application/json" -X POST https://integram.org/caLeNAvl6fq
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    83    0     0  100    83      0    107 --:--:-- --:--:-- --:--:--   108
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    84    0     0  100    84      0    104 --:--:-- --:--:-- --:--:--   106
+sender_addr: tasksubmitter0817@gmail.com
+pass: IamTaskSubmitter
+name: taskSubmitter
+receiver: None
+curl -d '{"text":"**task submitted:** task [sleep 2(7552)] on R3Z4-UBUNTU begins executing"}' -H "Content-Type: application/json" -X POST https://integram.org/caLeNAvl6fq
+sender_addr: tasksubmitter0817@gmail.com
+pass: IamTaskSubmitter
+name: taskSubmitter
+receiver: None
+curl -d '{"text":"**task finished:** task [sleep 2(7552)] on R3Z4-UBUNTU finishes executing"}' -H "Content-Type: application/json" -X POST https://integram.org/caLeNAvl6fq
