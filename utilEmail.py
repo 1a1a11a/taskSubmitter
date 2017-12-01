@@ -155,7 +155,7 @@ class emailClient:
                 exit(1)
         if self.config.email_service == "telegram":
             try: 
-                send_command = 'curl -d \'{"text":"' + '**' + topic + ':** ' + message + '"}\' -H "Content-Type: application/json" -X POST ' + self.telegram_api_address 
+                send_command = 'curl -d \'{"text":"' + '*&#9886;' + topic + ':&#9887;*<br/>'  + message + '"}\' -H "Content-Type: application/json" -X POST ' + self.telegram_api_address 
                 subprocess.call(send_command, shell=True)
                 print(send_command)
             except Exception as e: 
